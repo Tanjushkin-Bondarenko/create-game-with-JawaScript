@@ -40,7 +40,7 @@
         rightAnswer: "b",
         prize: "2500 USD",
         firstLevel: true,
-        firstLevelPrize: "2500 USD"
+        firstLevelfinalPrize: "2500 USD"
       },
        {
         question: "6. В різні пори року тривалість доби...",
@@ -48,7 +48,7 @@
         rightAnswer: "d",
         prize: "3000 USD",
          firstLevel: true,
-         firstLevelPrize: "2500 USD"
+         firstLevelfinalPrize: "2500 USD"
       },
        {
         question: "7. Небесний екватор розділяє небесну сферу на...",
@@ -56,7 +56,7 @@
         rightAnswer: "c",
         prize: "3500 USD",
         firstLevel: true,
-         firstLevelPrize: "2500 USD"
+         firstLevelfinalPrize: "2500 USD"
       },
        {
         question: "8. Сонце рухається серед зірок по колу, яке називається...",
@@ -64,7 +64,7 @@
         rightAnswer: "b",
         prize: "4000 USD",
         firstLevel: true,
-         firstLevelPrize: "2500 USD"
+         firstLevelfinalPrize: "2500 USD"
       },
        {
         question: "9. Найдовший день у північній півкулі настає ...",
@@ -72,7 +72,7 @@
         rightAnswer: "a",
         prize: "4500 USD",
         firstLevel: true,
-         firstLevelPrize: "2500 USD"
+         firstLevelfinalPrize: "2500 USD"
       },
        {
         question: "10. Де повинен знаходитися спостерігач, щоб висота світил над горизонтом, для нього, не змінювалася?",
@@ -130,9 +130,46 @@
         for(let i=0; i<test.length; i++){
             const question = test[i].question;
             const answer = test[i].answer;
-            const 
+            const prize = test[i].prize;
+            const rightAnswer = test[i].rightAnswer;
+            const firstLevel = test[i].firstLevel;
+            const firstLevelfinalPrize = test[i].firstLevelfinalPrize;
+            const secondLevel = test[i].secondLevel;
+            const secondLevelfinalPrize = test[i].secondLevelfinalPrize;
+            const final = test[i].final;
+            const finalPrize = test[i].finalPrize;
+            let castomerAnswer = prompt(`Вкажіть вірну відповідь \n`+ question + answer);
+
+            if(castomerAnswer == rightAnswer && !final){
+              let confirmed = confirm(`Ваш приз складає ${prize}. Бажаєте продовжувати?`);
+          if (confirmed) {
+            continue
+            }
+            else if(!confirmed && firstLevel){
+                alert(`Ваш приз складає ${firstLevelfinalPrize}. Гру завершено.`)
+            }
+            else if(!confirmed && secondLevel){
+                alert(`Ваш приз складає ${secondLevelfinalPrize}. Гру завершено.`)
+            }else{break}
         }
-    }
+        else if(!castomerAnswer == rightAnswer || firstLevel){
+            alert(`Ви відповіли не вірно. Ваш приз складає ${firstLevelfinalPrize}. Гру завершено.`)
+         break;
+        }
+        else if(!castomerAnswer == rightAnswer || secondLevel){
+            alert(`Ви відповіли не вірно. Ваш приз складає ${secondLevelfinalPrize}. Гру завершено.`)
+         break;
+        }
+        else if(final){
+            alert(`Вітаємо Ви виграли! Ваш приз складає ${finalPrize}`)
+          break;
+        }else{
+            alert(`Ви відповіли не вірно. Гру завершено.`);
+          break;
+        }
+    }}
+
+    putAnswer()
     </script>
 </body>
 </html>
